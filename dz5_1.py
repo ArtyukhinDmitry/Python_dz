@@ -9,9 +9,16 @@ a = int(input())
 print('Введи b : ')
 b = int(input())
 
-def degree(b):
+# def degree(b):
+#     if b == 0:
+#         return 1
+#     return a**b
+# print(degree(b))
+
+def degree(a, b):
     if b == 0:
         return 1
-    return a**b
+    return degree(a, b-1)*a
 
-print(degree(b))
+print(degree(a, b))
+

@@ -9,10 +9,23 @@ a = int(input())
 print('Введи b : ')
 b = int(input())
 
-c = int
+# c = int
+# def sum(c):
+#     return a+b
+# print(sum(c))
 
-def sum(c):
-    return a+b
+def sum(a, b):
+    if a<0 or b<0:
+        return 'error'
+    if a == 0:
+        return b
+    if b == 0:
+        return a
+    if a > b:
+        return sum(a, b-1) + 1
+    else:
+        return sum(a-1, b) + 1
 
-print(sum(c))
+print(sum(a, b))
+
 
