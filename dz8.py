@@ -52,7 +52,7 @@ def add_record():
 
 
 def data_collection(num):
-    answer = input(f"Go {num}: ")
+    answer = input(f"Vvedi {num}: ")
     while True:
         if num in 'lastname' 'name' 'surname':
             if answer.isalpha():
@@ -60,7 +60,7 @@ def data_collection(num):
         if num == 'phone number':
             if answer.isdigit() and len(answer) == 11:
                 break
-        answer = input(f'Record is not correct')
+        answer = input(f'Vvedi zanovo: ')
     return answer
 
 
@@ -73,15 +73,16 @@ def exist_contact(rec_id, data):
         
 
 
-# 3 +
+# 3 ++
 
 
 def search_record():
-    search_data = exist_contact(0, input('What search record? :'))
+#    search_data = exist_contact(0, input('What ID to search? :'))
+    search_data = exist_contact(input('What ID to search? :'), 0)
     if search_data:
         print(*search_data, sep='\n')
     else:
-        print('Record is not correct')
+        print('No such ID')
 
 
 # 4 ++
@@ -101,6 +102,7 @@ def change_record(data_tuple):
                 return
             all_data[i] = ' '.join(v)
             break
+
 
     with open(file_base, 'w', encoding="utf-8") as f:
         f.write(f'{symbol.join(all_data)}\n')
@@ -159,9 +161,9 @@ def exp_imp_menu():
                      '3: Exit\n')
         match move:
             case '1' :
-                import_record(input('What record?: '))
+                import_record(input('What base?: '))
             case '2':
-                export_record(input('What record?: '))
+                export_record(input('Vvedi name new Base?: '))
             case '3':
                 return 0
             case _:
@@ -169,6 +171,7 @@ def exp_imp_menu():
 
 def import_record(name):
     global file_base
+    name = f'{name}.txt'
     if path.exists(name):
         file_base = name
         read_records()
@@ -179,6 +182,8 @@ def export_record(name):
     if not path.exists(change_name):
         with open(change_name, 'w', encoding="utf-8") as f:
             f.write(f'{symbol.join(all_data)}\n')
+    else:
+        print('???????')
 
 
 # menu ++
